@@ -3,3 +3,5 @@ data "aws_ami" "ami" {            # refer terraform aws_ami doc
   name_regex       = "devops-practice-with-ansible"   # ami name
   owners           = ["self"]
 }
+
+

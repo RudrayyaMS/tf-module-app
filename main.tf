@@ -22,7 +22,11 @@ resource "aws_launch_template" "main" {
     )
   }
 
-// user_data = filebase64("${path.module}/example.sh")
+    #user_data = filebase64("${path.module}/userdata.sh")  #path.module : inside a module
+  user_data = base64encode(templatefile("${path.module}/userdata.sh", {   ## when instance created automatically ansible kickoff
+    component = var.component
+    env   = var.env
+  } ))
 }
 
 ## launch template versions
