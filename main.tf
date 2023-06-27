@@ -37,8 +37,9 @@ resource "aws_autoscaling_group" "main" {
     id      = aws_launch_template.main.id
     version = "$Latest"
   }
-  tags = merge(
-    var.tags,
-    { Name = "${var.component}-${var.env}" }
-  )
+ tag {
+   key                 = "name"
+   propagate_at_launch = false
+   value               = "${var.component}-${var.env}"
+ }
 }
