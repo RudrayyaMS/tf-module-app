@@ -1,9 +1,9 @@
 resource "aws_launch_template" "main" {
   name = "${var.component}-${var.env}"
 
-#  iam_instance_profile {    # instance need to fetch parameter from parameter store
-#    name = "test"
-#  }
+  iam_instance_profile {    # instance need to fetch parameter from parameter store
+    name = aws_iam_instance_profile.main.name
+  }
 
   image_id = data.aws_ami.ami.id
   instance_market_options {     #spot instance

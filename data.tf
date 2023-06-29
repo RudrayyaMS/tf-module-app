@@ -5,3 +5,4 @@ data "aws_ami" "ami" {            # refer terraform aws_ami doc
 }
 
 
+data "aws_caller_identity" "account" {}
