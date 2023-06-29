@@ -66,9 +66,9 @@ resource "aws_security_group" "main" {
   ingress {
     description      = "APP"
     from_port        = var.port
-    to_port          = var.allow_app_to
+    to_port          = var.port
     protocol         = "tcp"
-    cidr_blocks      =  var.allow_app_to
+    cidr_blocks      = var.allow_app_to
   }
 
   egress {
