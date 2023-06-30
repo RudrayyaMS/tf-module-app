@@ -10,3 +10,5 @@ variable "vpc_id" {}
 variable "bastion_cidr" {}
 variable "allow_app_to" {}
 variable "port" {}
+variable "dns_domain" {}
+variable "alb" {}

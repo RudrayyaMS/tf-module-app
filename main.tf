@@ -37,7 +37,7 @@ resource "aws_autoscaling_group" "main" {
   max_size            = var.max_size
   min_size            = var.min_size
   vpc_zone_identifier = var.subnets                # subnet
-  target_group_arns   = [aws_lb_target_group.main.arn]  
+  target_group_arns   = [aws_lb_target_group.main.arn]
 
   launch_template {
     id      = aws_launch_template.main.id
@@ -104,3 +104,12 @@ resource "aws_lb_target_group" "main" {  # attach this TG to auto scaling
     { Name = "${var.component}-${var.env}" }
   )
 }
+
+# CNAME
+#resource "aws_route53_record" "main" {
+#  zone_id = data.aws_route53_zone.domain.zone_id
+#  name    = "${var.component}.${var.env}.${var.dns_domain}"
+#  type    = "CNAME"
+#  ttl     = 30
+#  records = [aws_eip.lb.public_ip]
+#}
