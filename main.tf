@@ -106,10 +106,10 @@ resource "aws_lb_target_group" "main" {  # attach this TG to auto scaling
 }
 
 # CNAME
-#resource "aws_route53_record" "main" {
-#  zone_id = data.aws_route53_zone.domain.zone_id
-#  name    = "${var.component}.${var.env}.${var.dns_domain}"
-#  type    = "CNAME"
-#  ttl     = 30
-#  records = [aws_eip.lb.public_ip]
-#}
+resource "aws_route53_record" "main" {
+  zone_id = data.aws_route53_zone.domain.zone_id
+  name    = "${var.component}.${var.env}.${var.dns_domain}"
+  type    = "CNAME"
+  ttl     = 30
+  records = [var.alb_dns_name]
+}
