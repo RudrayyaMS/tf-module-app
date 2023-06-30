@@ -12,3 +12,5 @@ variable "allow_app_to" {}
 variable "port" {}
 variable "dns_domain" {}
 variable "alb_dns_name" {}
+variable "listener_arn" {}
+variable "listener_priority" {}
